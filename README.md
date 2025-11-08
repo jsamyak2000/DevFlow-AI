@@ -4,8 +4,6 @@ DevFlow AI is a Next.js application built to supercharge developer workflows wit
 
 This project was created for a hackathon to demonstrate the power of generative AI in practical, developer-focused applications.
 
-![DevFlow AI Dashboard](https://i.imgur.com/your-screenshot-url.png) <!-- It's a good idea to replace this with an actual screenshot of your app's dashboard -->
-
 ## Features
 
 DevFlow AI currently includes the following tools:
