@@ -74,7 +74,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarFooter>
         </Sidebar>
 
-        <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col md:ml-[var(--sidebar-width-icon)] peer-data-[state=expanded]:md:ml-[var(--sidebar-width)] transition-[margin-left] duration-200 ease-linear">
           <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
             <SidebarTrigger className="md:hidden" />
             <div className="flex items-center gap-4 ml-auto">
