@@ -52,7 +52,6 @@ const summarizeGitCommitsPrompt = ai.definePrompt({
   - {{{this}}}
   {{/each}}
 
-  {% if needsSummarizationTool.needsSummarization commitMessages %}The commit messages are too long and need to be summarized.{% endif %}
   Please provide a concise summary of the changes made in these commits.
   The summary should highlight the main features, bug fixes, and other notable changes.
   `,  
