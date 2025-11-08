@@ -12,41 +12,12 @@ export default function SettingsPage() {
         <p className="text-muted-foreground">Manage your automations, integrations, and notification preferences.</p>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Smart Scheduler</CardTitle>
-            <CardDescription>
-              Integrate with Google Calendar to automate stand-ups, sprints, or follow-ups.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="flex items-center justify-between rounded-lg border p-4">
-              <div className="space-y-0.5">
-                <Label htmlFor="gcal-integration" className="text-base">Google Calendar Integration</Label>
-                <p className="text-sm text-muted-foreground">
-                  Connect your Google Calendar to enable scheduling.
-                </p>
-              </div>
-              <Button>Connect</Button>
-            </div>
-            <div className="flex items-center justify-between rounded-lg border p-4">
-              <div className="space-y-0.5">
-                <Label htmlFor="auto-standup" className="text-base">Automated Daily Stand-ups</Label>
-                 <p className="text-sm text-muted-foreground">
-                  Schedule a recurring event for your team's stand-up.
-                </p>
-              </div>
-              <Switch id="auto-standup" disabled />
-            </div>
-          </CardContent>
-        </Card>
-
+      <div className="grid gap-8 lg:grid-cols-1">
         <Card>
           <CardHeader>
             <CardTitle>Notification System</CardTitle>
             <CardDescription>
-              Receive notifications for completed automations and pending approvals via Firebase Cloud Messaging.
+              Receive notifications for completed automations and pending approvals.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
