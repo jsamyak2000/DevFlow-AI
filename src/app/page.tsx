@@ -2,8 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, FileText, ListTodo, BotMessageSquare } from 'lucide-react';
-import { LoginButton } from '@/components/auth-components';
+import { Code, FileText, ListTodo, BotMessageSquare, Rocket } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const features = [
@@ -39,7 +38,11 @@ export default function LandingPage() {
           <Image src="/logo.svg" alt="DevFlow AI Logo" width={32} height={32} />
           <span className="font-headline text-xl font-bold">DevFlow AI</span>
         </Link>
-        <LoginButton />
+        <Button asChild>
+          <Link href="/dashboard">
+            <Rocket className="mr-2 h-4 w-4" /> Go to Dashboard
+          </Link>
+        </Button>
       </header>
 
       <main className="flex-1">
@@ -52,7 +55,11 @@ export default function LandingPage() {
               DevFlow AI is a smart assistant that automates your repetitive developer tasks, so you can get back to what matters most: building great software.
             </p>
             <div className="mt-8">
-              <LoginButton />
+              <Button asChild>
+                <Link href="/dashboard">
+                  <Rocket className="mr-2 h-4 w-4" /> Get Started
+                </Link>
+              </Button>
             </div>
           </div>
         </section>

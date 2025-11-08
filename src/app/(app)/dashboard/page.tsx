@@ -1,6 +1,5 @@
 'use client';
 
-import { useAuth } from '@/hooks/use-auth';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowRight, Code, FileText, ListTodo, Settings } from 'lucide-react';
 import Link from 'next/link';
@@ -33,12 +32,10 @@ const features = [
 ];
 
 export default function DashboardPage() {
-  const { user } = useAuth();
-
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="font-headline text-3xl font-bold">Welcome back, {user?.displayName?.split(' ')[0] || 'Developer'}!</h1>
+        <h1 className="font-headline text-3xl font-bold">Welcome, Developer!</h1>
         <p className="text-muted-foreground">Here are your AI-powered tools to streamline your workflow.</p>
       </div>
 
