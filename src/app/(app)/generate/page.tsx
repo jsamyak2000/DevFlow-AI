@@ -18,12 +18,6 @@ const initialState: GenerateState = {
 export default function GeneratePage() {
   const [state, formAction, isSubmitting] = useActionState(generateAction, initialState);
   const [description, setDescription] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    formAction(formData);
-  };
   
   return (
     <div className="flex flex-col gap-8">
@@ -34,7 +28,7 @@ export default function GeneratePage() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form action={formAction} className="flex flex-col gap-4">
         <Input
           name="description"
           value={description}

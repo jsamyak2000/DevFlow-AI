@@ -20,12 +20,6 @@ const initialState: ParseState = {
 export default function ParsePage() {
   const [state, formAction, isSubmitting] = useActionState(parseAction, initialState);
   const [text, setText] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    formAction(formData);
-  };
   
   return (
     <div className="flex flex-col gap-8">
@@ -36,7 +30,7 @@ export default function ParsePage() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form action={formAction} className="flex flex-col gap-4">
         <Textarea
           name="transcript"
           value={text}
