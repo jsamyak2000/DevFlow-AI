@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, Code, FileText, ListTodo, Settings } from 'lucide-react';
+import { ArrowRight, Code, FileText, ListTodo } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
@@ -22,12 +22,6 @@ const features = [
     icon: <Code className="h-8 w-8" />,
     title: 'Code Snippet Generator',
     description: 'Generate code from natural language.',
-  },
-  {
-    href: '/settings',
-    icon: <Settings className="h-8 w-8" />,
-    title: 'Automations & Settings',
-    description: 'Configure integrations and notifications.',
   },
 ];
 

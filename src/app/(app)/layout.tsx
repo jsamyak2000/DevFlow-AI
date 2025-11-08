@@ -18,7 +18,6 @@ import {
   FileText,
   ListTodo,
   Code,
-  Settings,
   Bot,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -29,7 +28,6 @@ const navItems = [
   { href: '/summarize', icon: <FileText />, label: 'AI Summaries' },
   { href: '/parse', icon: <ListTodo />, label: 'Meeting Parser' },
   { href: '/generate', icon: <Code />, label: 'Code Generator' },
-  { href: '/settings', icon: <Settings />, label: 'Settings' },
 ];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
