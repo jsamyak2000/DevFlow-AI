@@ -34,7 +34,7 @@ export default function ReviewPage() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Paste your code diff here, e.g., from 'git diff'"
-          rows={15}
+          rows={10}
           className="bg-card font-code text-sm"
           required
         />
@@ -54,27 +54,29 @@ export default function ReviewPage() {
       </form>
 
       {(isSubmitting || state.review || state.error) && (
-        <div className="relative">
+        <div className="relative flex-1 min-h-0">
           <div className="absolute top-4 left-6 z-10 flex items-center font-headline text-xl font-semibold">
             <Bot className="mr-2 h-6 w-6 text-primary" />
             AI Code Review
           </div>
-          {isSubmitting ? (
-            <div className="mt-2 w-full rounded-lg bg-muted p-6 pt-16">
-              <div className="space-y-2">
-                <div className="h-4 w-5/6 animate-pulse rounded bg-background/50"></div>
-                <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
-                <div className="h-4 w-3/4 animate-pulse rounded bg-background/50"></div>
-                <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
+          <div className="h-full w-full">
+            {isSubmitting ? (
+              <div className="h-full w-full rounded-lg bg-muted p-6 pt-16">
+                <div className="space-y-2">
+                  <div className="h-4 w-5/6 animate-pulse rounded bg-background/50"></div>
+                  <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
+                  <div className="h-4 w-3/4 animate-pulse rounded bg-background/50"></div>
+                  <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
+                </div>
               </div>
-            </div>
-          ) : state.error ? (
-            <div className="mt-2 w-full rounded-lg border border-destructive bg-card p-6 pt-16">
-              <p className="text-destructive">{state.error}</p>
-            </div>
-          ) : (
-            <CodeBlock code={state.review} isMarkdown={true} />
-          )}
+            ) : state.error ? (
+              <div className="h-full w-full rounded-lg border border-destructive bg-card p-6 pt-16">
+                <p className="text-destructive">{state.error}</p>
+              </div>
+            ) : (
+              <CodeBlock code={state.review} isMarkdown={true} />
+            )}
+          </div>
         </div>
       )}
     </div>

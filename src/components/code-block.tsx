@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Check, Clipboard } from 'lucide-react';
+import { ScrollArea } from './ui/scroll-area';
 
 // A simple markdown-to-HTML converter
 function markdownToHtml(markdown: string) {
@@ -18,9 +19,9 @@ function markdownToHtml(markdown: string) {
     markdown = markdown.replace(/^\s*\n\* (.*)/gim, '<ul>\n<li>$1</li>');
     markdown = markdown.replace(/^\* (.*)/gim, '<li>$1</li>');
      // Convert code blocks
-    markdown = markdown.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+    markdown = markdown.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code class="font-code">$2</code></pre>');
     // Convert inline code
-    markdown = markdown.replace(/`([^`]+)`/g, '<code>$1</code>');
+    markdown = markdown.replace(/`([^`]+)`/g, '<code class="font-code">$1</code>');
     return markdown.trim();
 }
 
@@ -45,8 +46,8 @@ export function CodeBlock({ code, isMarkdown }: { code: string, isMarkdown?: boo
 
   if (isMarkdown) {
       return (
-        <div className="relative rounded-lg bg-gray-800 text-white pt-14">
-             <div className="absolute top-4 right-4 flex items-center gap-2">
+        <div className="relative h-full w-full rounded-lg bg-gray-800 text-white pt-14">
+             <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
                 <Button
                     variant="ghost"
                     size="icon"
@@ -61,17 +62,19 @@ export function CodeBlock({ code, isMarkdown }: { code: string, isMarkdown?: boo
                     <span className="sr-only">Copy code</span>
                 </Button>
             </div>
-            <div
-              className="prose prose-sm prose-invert max-w-none p-4 font-code text-sm"
-              dangerouslySetInnerHTML={{ __html: markdownToHtml(code) }}
-            />
+            <ScrollArea className="h-full">
+              <div
+                className="prose prose-sm prose-invert max-w-none p-4 pt-0 font-body text-sm"
+                dangerouslySetInnerHTML={{ __html: markdownToHtml(code) }}
+              />
+            </ScrollArea>
         </div>
       )
   }
 
   return (
-    <div className="relative rounded-lg bg-gray-800 text-white pt-14">
-      <div className="absolute top-4 right-4 flex items-center gap-2">
+    <div className="relative h-full w-full rounded-lg bg-gray-800 text-white pt-14">
+      <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
         <span className="text-xs text-gray-400">{language}</span>
         <Button
           variant="ghost"
@@ -87,9 +90,11 @@ export function CodeBlock({ code, isMarkdown }: { code: string, isMarkdown?: boo
           <span className="sr-only">Copy code</span>
         </Button>
       </div>
-      <pre className="overflow-x-auto p-4">
-        <code className="font-code text-sm">{cleanCode}</code>
-      </pre>
+      <ScrollArea className="h-full">
+        <pre className="p-4 pt-0">
+          <code className="font-code text-sm">{cleanCode}</code>
+        </pre>
+      </ScrollArea>
     </div>
   );
 }
