@@ -55,29 +55,30 @@ export default function ReviewPage() {
       </form>
 
       {(isSubmitting || state.review || state.error) && (
-        <Card>
-          <CardContent className="p-6">
-            <h2 className="mb-4 flex items-center font-headline text-xl font-semibold">
+        <div>
+          <div className="relative">
+            <div className="absolute top-4 left-6 z-10 flex items-center font-headline text-xl font-semibold">
               <Bot className="mr-2 h-6 w-6 text-primary" />
-              Code Review
-            </h2>
+              AI Code Review
+            </div>
             {isSubmitting ? (
-              <div className="space-y-2">
-                <div className="h-4 w-5/6 animate-pulse rounded bg-muted"></div>
-                <div className="h-4 w-full animate-pulse rounded bg-muted"></div>
-                <div className="h-4 w-3/4 animate-pulse rounded bg-muted"></div>
-                <div className="h-4 w-full animate-pulse rounded bg-muted"></div>
+              <div className="mt-2 w-full rounded-lg bg-muted p-6 pt-16">
+                <div className="space-y-2">
+                  <div className="h-4 w-5/6 animate-pulse rounded bg-background/50"></div>
+                  <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
+                  <div className="h-4 w-3/4 animate-pulse rounded bg-background/50"></div>
+                  <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
+                </div>
               </div>
             ) : state.error ? (
-                <p className='text-destructive'>{state.error}</p>
+              <div className="mt-2 w-full rounded-lg border border-destructive bg-card p-6 pt-16">
+                <p className="text-destructive">{state.error}</p>
+              </div>
             ) : (
-              <div
-                className="prose prose-sm max-w-none text-foreground/90 prose-headings:text-foreground prose-strong:text-foreground prose-code:text-foreground prose-code:before:content-[''] prose-code:after:content-[''] prose-code:rounded prose-code:bg-muted prose-code:p-1"
-                dangerouslySetInnerHTML={{ __html: state.review.replace(/```(\w+)?\n/g, '<pre><code>').replace(/```\n?/g, '</code></pre>') }}
-              />
+              <CodeBlock code={state.review} isMarkdown={true} />
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       )}
     </div>
   );
