@@ -51,7 +51,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <SidebarMenu>
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <Link href={item.href} passHref>
+                  <Link href={item.href}>
                     <SidebarMenuButton
                       isActive={pathname === item.href}
                       tooltip={{ children: item.label }}
@@ -65,7 +65,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </SidebarMenu>
           </SidebarContent>
           <SidebarFooter>
-             <Link href="/generate" passHref>
+             <Link href="/generate">
                 <SidebarMenuButton tooltip={{ children: 'Code Generator' }}>
                     <Bot />
                     <span>AI Assistant</span>
@@ -74,7 +74,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarFooter>
         </Sidebar>
 
-        <div className="flex-1 flex flex-col w-0">
+        <div className="flex flex-1 flex-col">
           <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
             <SidebarTrigger className="md:hidden" />
             <div className="flex items-center gap-4 ml-auto">
