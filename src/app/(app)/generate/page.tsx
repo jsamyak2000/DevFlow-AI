@@ -1,6 +1,5 @@
 'use client';
-import { useState } from 'react';
-import { useFormState } from 'react-dom';
+import { useState, useActionState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { CodeBlock } from '@/components/code-block';
@@ -17,16 +16,13 @@ const initialState: GenerateState = {
 };
 
 export default function GeneratePage() {
-  const [state, formAction] = useFormState(generateAction, initialState);
+  const [state, formAction, isSubmitting] = useActionState(generateAction, initialState);
   const [description, setDescription] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
-    await formAction(formData);
-    setIsSubmitting(false);
+    formAction(formData);
   };
   
   return (

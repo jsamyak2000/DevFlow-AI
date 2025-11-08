@@ -1,6 +1,5 @@
 'use client';
-import { useState } from 'react';
-import { useFormState } from 'react-dom';
+import { useState, useActionState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,16 +11,13 @@ const initialState = {
 };
 
 export default function SummarizePage() {
-  const [state, formAction] = useFormState(summarizeAction, initialState);
+  const [state, formAction, isSubmitting] = useActionState(summarizeAction, initialState);
   const [text, setText] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
-    await formAction(formData);
-    setIsSubmitting(false);
+    formAction(formData);
   };
   
   return (

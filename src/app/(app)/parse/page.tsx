@@ -1,6 +1,5 @@
 'use client';
-import { useState } from 'react';
-import { useFormState } from 'react-dom';
+import { useState, useActionState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -19,16 +18,13 @@ const initialState: ParseState = {
 };
 
 export default function ParsePage() {
-  const [state, formAction] = useFormState(parseAction, initialState);
+  const [state, formAction, isSubmitting] = useActionState(parseAction, initialState);
   const [text, setText] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
-    await formAction(formData);
-    setIsSubmitting(false);
+    formAction(formData);
   };
   
   return (
