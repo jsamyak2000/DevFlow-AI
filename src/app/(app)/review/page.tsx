@@ -20,7 +20,7 @@ export default function ReviewPage() {
   const [text, setText] = useState('');
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex h-full flex-col gap-8">
       <div>
         <h1 className="font-headline text-3xl font-bold">AI Code Reviewer</h1>
         <p className="text-muted-foreground">
