@@ -1,7 +1,6 @@
 'use client';
 import { useState, useActionState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { reviewAction } from './actions';
 import { Bot, Loader2, ScanSearch } from 'lucide-react';
@@ -21,7 +20,7 @@ export default function ReviewPage() {
   const [text, setText] = useState('');
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 h-full">
       <div>
         <h1 className="font-headline text-3xl font-bold">AI Code Reviewer</h1>
         <p className="text-muted-foreground">
@@ -55,29 +54,27 @@ export default function ReviewPage() {
       </form>
 
       {(isSubmitting || state.review || state.error) && (
-        <div>
-          <div className="relative">
-            <div className="absolute top-4 left-6 z-10 flex items-center font-headline text-xl font-semibold">
-              <Bot className="mr-2 h-6 w-6 text-primary" />
-              AI Code Review
-            </div>
-            {isSubmitting ? (
-              <div className="mt-2 w-full rounded-lg bg-muted p-6 pt-16">
-                <div className="space-y-2">
-                  <div className="h-4 w-5/6 animate-pulse rounded bg-background/50"></div>
-                  <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
-                  <div className="h-4 w-3/4 animate-pulse rounded bg-background/50"></div>
-                  <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
-                </div>
-              </div>
-            ) : state.error ? (
-              <div className="mt-2 w-full rounded-lg border border-destructive bg-card p-6 pt-16">
-                <p className="text-destructive">{state.error}</p>
-              </div>
-            ) : (
-              <CodeBlock code={state.review} isMarkdown={true} />
-            )}
+        <div className="relative">
+          <div className="absolute top-4 left-6 z-10 flex items-center font-headline text-xl font-semibold">
+            <Bot className="mr-2 h-6 w-6 text-primary" />
+            AI Code Review
           </div>
+          {isSubmitting ? (
+            <div className="mt-2 w-full rounded-lg bg-muted p-6 pt-16">
+              <div className="space-y-2">
+                <div className="h-4 w-5/6 animate-pulse rounded bg-background/50"></div>
+                <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
+                <div className="h-4 w-3/4 animate-pulse rounded bg-background/50"></div>
+                <div className="h-4 w-full animate-pulse rounded bg-background/50"></div>
+              </div>
+            </div>
+          ) : state.error ? (
+            <div className="mt-2 w-full rounded-lg border border-destructive bg-card p-6 pt-16">
+              <p className="text-destructive">{state.error}</p>
+            </div>
+          ) : (
+            <CodeBlock code={state.review} isMarkdown={true} />
+          )}
         </div>
       )}
     </div>

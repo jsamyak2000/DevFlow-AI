@@ -74,14 +74,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarFooter>
         </Sidebar>
 
-        <div className="flex-1 flex-col">
+        <div className="flex-1 flex flex-col w-0">
           <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
             <SidebarTrigger className="md:hidden" />
             <div className="flex items-center gap-4 ml-auto">
               {/* UserNav removed */}
             </div>
           </header>
-          <main className="flex-1 p-4 md:p-6 lg:p-8">{children}</main>
+          <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-auto">{children}</main>
         </div>
       </div>
     </SidebarProvider>
