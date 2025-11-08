@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, Code, FileText, ListTodo } from 'lucide-react';
+import { ArrowRight, Code, FileText, ListTodo, ScanSearch } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
@@ -23,6 +23,12 @@ const features = [
     title: 'Code Snippet Generator',
     description: 'Generate code from natural language.',
   },
+  {
+    href: '/review',
+    icon: <ScanSearch className="h-8 w-8" />,
+    title: 'AI Code Reviewer',
+    description: 'Get an AI-powered review for your code diffs.',
+  },
 ];
 
 export default function DashboardPage() {
@@ -33,7 +39,7 @@ export default function DashboardPage() {
         <p className="text-muted-foreground">Here are your AI-powered tools to streamline your workflow.</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
         {features.map((feature) => (
           <Link
             href={feature.href}

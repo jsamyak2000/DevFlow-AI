@@ -19,6 +19,7 @@ import {
   ListTodo,
   Code,
   Bot,
+  ScanSearch,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -28,6 +29,7 @@ const navItems = [
   { href: '/summarize', icon: <FileText />, label: 'AI Summaries' },
   { href: '/parse', icon: <ListTodo />, label: 'Meeting Parser' },
   { href: '/generate', icon: <Code />, label: 'Code Generator' },
+  { href: '/review', icon: <ScanSearch />, label: 'Code Reviewer' },
 ];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
